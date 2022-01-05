@@ -10,7 +10,7 @@ def read_text():
     file = open(path_name,"rb")
 
     fileReader = PyPDF2.PdfFileReader(file)
-    page = fileReader.getPage(page_num)
+    page = fileReader.getPage(page_num-1)
     page_content = page.extractText()
     pyttsx3.speak(page_content)
 
@@ -34,7 +34,7 @@ label2.pack(fill=X, pady=20)
 page_number = Entry(window, width=30, font=("Arial Bold", 25),bg="grey")
 page_number.pack(fill=X, pady=5)
 
-button = Button(window, text="Read", font=("Arial Bold", 25), command=lambda:read_text, bg="grey")
+button = Button(window, text="Read", font=("Arial Bold", 25), command=lambda:read_text(), bg="grey")
 button.pack(pady=20)
 
 window.mainloop()
